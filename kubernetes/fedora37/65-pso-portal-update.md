@@ -105,21 +105,21 @@
   - 確認観点：指定したTagの値がPodのコンテナで指定されていること
 
     ```text
-    be-history-7b95457ddb-wnwcp     image: harbor.energia.pso-portal/vmw-pso-portal/be-history:0.2
-    be-history-7b95457ddb-xn4kl     image: harbor.energia.pso-portal/vmw-pso-portal/be-history:0.2
-    be-inventory-bb46fd96b-2dw4r     image: harbor.energia.pso-portal/vmw-pso-portal/be-inventory:0.2
-    be-inventory-bb46fd96b-4h9m2     image: harbor.energia.pso-portal/vmw-pso-portal/be-inventory:0.2
-    be-notice-685b54cb84-2wd7c     image: harbor.energia.pso-portal/vmw-pso-portal/be-notice:0.2
-    be-notice-685b54cb84-jhb9m     image: harbor.energia.pso-portal/vmw-pso-portal/be-notice:0.2
-    be-nsx-lb-8bb96bb4d-lmfm7     image: harbor.energia.pso-portal/vmw-pso-portal/be-nsx_lb:0.2
-    be-nsx-lb-8bb96bb4d-snk5j     image: harbor.energia.pso-portal/vmw-pso-portal/be-nsx_lb:0.2
-    be-portal-auth-77c84b9bd5-ggppd     image: harbor.energia.pso-portal/vmw-pso-portal/be-portal_auth:0.2
-    be-portal-auth-77c84b9bd5-m5llp     image: harbor.energia.pso-portal/vmw-pso-portal/be-portal_auth:0.2
-    be-vcenter-vm-68b897b8d7-7kvgx     image: harbor.energia.pso-portal/vmw-pso-portal/be-vcenter_vm:0.2
-    be-vcenter-vm-68b897b8d7-gcfrc     image: harbor.energia.pso-portal/vmw-pso-portal/be-vcenter_vm:0.2
-    bff-5fb6bf9cd-p2pbr     image: harbor.energia.pso-portal/vmw-pso-portal/bff:0.2
-    bff-5fb6bf9cd-t5f5m     image: harbor.energia.pso-portal/vmw-pso-portal/bff:0.2
-    fe-8f7844bf6-8lpsc     image: harbor.energia.pso-portal/vmw-pso-portal/fe:0.2
-    fe-8f7844bf6-bslq9     image: harbor.energia.pso-portal/vmw-pso-portal/fe:0.2
+    be-history-7b95457ddb-wnwcp     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-history:0.2
+    be-history-7b95457ddb-xn4kl     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-history:0.2
+    be-inventory-bb46fd96b-2dw4r     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-inventory:0.2
+    be-inventory-bb46fd96b-4h9m2     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-inventory:0.2
+    be-notice-685b54cb84-2wd7c     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-notice:0.2
+    be-notice-685b54cb84-jhb9m     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-notice:0.2
+    be-nsx-lb-8bb96bb4d-lmfm7     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-nsx_lb:0.2
+    be-nsx-lb-8bb96bb4d-snk5j     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-nsx_lb:0.2
+    be-portal-auth-77c84b9bd5-ggppd     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-portal_auth:0.2
+    be-portal-auth-77c84b9bd5-m5llp     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-portal_auth:0.2
+    be-vcenter-vm-68b897b8d7-7kvgx     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-vcenter_vm:0.2
+    be-vcenter-vm-68b897b8d7-gcfrc     image: harbor2.home.ndeguchi.com/vmw-pso-portal/be-vcenter_vm:0.2
+    bff-5fb6bf9cd-p2pbr     image: harbor2.home.ndeguchi.com/vmw-pso-portal/bff:0.2
+    bff-5fb6bf9cd-t5f5m     image: harbor2.home.ndeguchi.com/vmw-pso-portal/bff:0.2
+    fe-8f7844bf6-8lpsc     image: harbor2.home.ndeguchi.com/vmw-pso-portal/fe:0.2
+    fe-8f7844bf6-bslq9     image: harbor2.home.ndeguchi.com/vmw-pso-portal/fe:0.2
     ```
 

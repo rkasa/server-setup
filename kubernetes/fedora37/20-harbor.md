@@ -65,15 +65,12 @@ CLI の作業は全て `root` ユーザで作業を実施すること。
   - 確認観点：解凍したファイルが存在すること
 
     ```text
-    -rw-r--r--. 1 root root     11347 11月  1 16:03 LICENSE
-    drwxr-xr-x. 3 root root        20  1月  4 10:16 common
-    -rw-r--r--. 1 root root      3643 11月  1 16:03 common.sh
-    -rw-r--r--. 1 root root      5889  1月  4 10:16 docker-compose.yml
-    -rw-r--r--. 1 root root 801456311 11月  1 16:04 harbor.v2.9.1.tar.gz
-    -rw-r--r--. 1 root root     13803  1月  4 10:15 harbor.yml
-    -rw-r--r--. 1 root root     13760 11月  1 16:03 harbor.yml.tmpl
-    -rwxr-xr-x. 1 root root      1975 11月  1 16:03 install.sh
-    -rwxr-xr-x. 1 root root      1881 11月  1 16:03 prepare
+    -rw-r--r--. 1 root root     11347 11月  1  2023 LICENSE
+    -rw-r--r--. 1 root root      3643 11月  1  2023 common.sh
+    -rw-r--r--. 1 root root 801456311 11月  1  2023 harbor.v2.9.1.tar.gz
+    -rw-r--r--. 1 root root     13760 11月  1  2023 harbor.yml.tmpl
+    -rwxr-xr-x. 1 root root      1975 11月  1  2023 install.sh
+    -rwxr-xr-x. 1 root root      1881 11月  1  2023 prepare
     ```
 
 - Harbor のコンテナイメージをロードする
