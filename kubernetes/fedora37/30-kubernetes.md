@@ -250,8 +250,8 @@
   vim /etc/keepalived/check_apiserver.sh
   ```
 
-  - 以下内容を入力する
-
+  - 以下内容を入力する  
+    (入力例)  
     ```bash
     #!/bin/sh
     APISERVER_VIP=192.168.14.10
@@ -279,8 +279,8 @@
   vim /etc/keepalived/keepalived.conf
   ```
 
-  - 以下内容を入力する
-
+  - 以下内容を入力する  
+    (入力例)  
     ```text
     ! /etc/keepalived/keepalived.conf
     ! Configuration File for keepalived
@@ -1162,6 +1162,32 @@
     echo ""
   done
   ```
+
+### 各 Node への必要ディレクトリの作成
+
+- 実施対象サーバ：5台全て **(注意)**
+  - calico のインストールに必要となるディレクトリをそれぞれの node にて以下のコマンドで作成
+    ```bash
+    mkdir -p /var/lib/calico
+    ls -l /var/lib/ | grep calico
+      # -> ディレクトリが存在すること
+    
+    mkdir -p /opt/cni/bin
+    ls -l /opt/cni/ | grep bin
+      # -> ディレクトリが存在すること
+
+    mkdir -p /etc/cni/net.d
+    ls -l /etc/cni/ | grep net.d
+      # -> ディレクトリが存在すること
+
+    mkdir -p /var/run/calico
+    ls -l /var/run/ | grep calico
+      # -> ディレクトリが存在すること
+
+    mkdir -p /etc/calico
+    ls -l /etc/ | grep calico
+      # -> ディレクトリが存在すること
+    ```
 
 ### Manifest 作成
 
