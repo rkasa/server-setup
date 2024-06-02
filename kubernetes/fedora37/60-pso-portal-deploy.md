@@ -268,7 +268,7 @@
     echo ""
   done
   
-  docker images | grep vmw-pso-portal
+  docker images | grep pso-portal
   ```
 
   - 確認観点：PSO Portal のコンテナイメージが存在すること
@@ -299,7 +299,7 @@
     echo ""
   done
   
-  docker images | grep vmw-pso-portal | grep ${harbor_fqdn}
+  docker images | grep pso-portal | grep ${harbor_fqdn}
   ```
 
   - 確認観点：Tag を付与したコンテナイメージが存在すること
@@ -792,29 +792,31 @@
   kubectl get cronjob -n vmw-pso-portal
   ```
 
-  - 確認観点：以下2つの cronjob が存在すること
+  - 確認観点：以下3つの cronjob が存在すること
 
     ```text
     NAME                              SCHEDULE    SUSPEND   ACTIVE   LAST SCHEDULE   AGE
     be-history-detect-system-errors   * * * * *   False     1        4s              10s
+    delete-expired-tokens             0 * * * *   False     1        4s              10s
     vm-refresh                        * * * * *   False     1        4s              10s
     ```
 
   ```bash
-  watch "kubectl get pod -n vmw-pso-portal | grep -e be-history-detect-system-errors -e vm-refresh"
+  watch "kubectl get pod -n vmw-pso-portal | grep -e be-history-detect-system-errors -e delete-expired-tokens -e vm-refresh"
   ```
 
-  - 確認観点： `be-history-detect-system-errors-xxx` と `vm-refresh-xxx` の Pod が作成され `Completed` になるまで待機。（Podは1分毎に作成される）
+  - 確認観点： `be-history-detect-system-errors-xxx` と `delete-expired-tokens-xxx` と `vm-refresh-xxx` の Pod が作成され `Completed` になるまで待機。（Podは`delete-expired-tokens-xxx`のみ1時間毎、他2つは1分毎に作成される）
 
     ```text
     <出力例>
     be-history-detect-system-errors-28406459-j2rzq   0/1     Completed   0               44s
+    delete-expired-tokens-28622266-sccvf             0/1     Completed   0               44s
     vm-refresh-28406459-cf49h                        0/1     Completed   0               44s
     ```
 
   ```bash
   # ログ確認
-  kubectl get pod -n vmw-pso-portal | grep -e be-history-detect-system-errors -e vm-refresh
+  kubectl get pod -n vmw-pso-portal | grep -e be-history-detect-system-errors -e delete-expired-tokens -e vm-refresh
   kubectl logs $(kubectl get pod -n vmw-pso-portal | awk '{ print $1 }' | grep be-history-detect-system-errors | tail -n 1) -n vmw-pso-portal
   ```
 
@@ -841,6 +843,37 @@
     <
       0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
     * Connection #0 to host be-history.vmw-pso-portal.svc.cluster.local left intact
+    ```
+
+  ```bash
+  kubectl logs $(kubectl get pod -n vmw-pso-portal | awk '{ print $1 }' | grep delete-expired-tokens | tail -n 1) -n vmw-pso-portal
+    # -> 204 No Content が応答されていること
+  ```
+
+  - 確認観点：204 No Content が応答されていること
+
+    ```text
+    <出力例>
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+      0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host be-portal-auth.vmw-pso-portal.svc.cluster.local:8080 was resolved.
+    * IPv6: (none)
+    * IPv4: 10.109.221.71
+    *   Trying 10.109.221.71:8080...
+    * Connected to be-portal-auth.vmw-pso-portal.svc.cluster.local (10.109.221.71) port 8080
+    > DELETE /api/v1/expired_tokens HTTP/1.1
+    > Host: be-portal-auth.vmw-pso-portal.svc.cluster.local:8080
+    > User-Agent: curl/8.8.0
+    > Accept: */*
+    >
+    * Request completely sent off
+    < HTTP/1.1 204 No Content
+    < date: Sun, 02 Jun 2024 14:00:00 GMT
+    < server: uvicorn
+    < content-type: application/json
+    <
+      0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+    * Connection #0 to host be-portal-auth.vmw-pso-portal.svc.cluster.local left intact
     ```
 
   ```bash
